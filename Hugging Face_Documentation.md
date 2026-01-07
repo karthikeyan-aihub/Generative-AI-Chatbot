@@ -32,7 +32,8 @@ The application is automatically built and deployed from a connected GitHub repo
 
 The chatbot can be accessed directly using the following public URL:
 
-https://padmasriai-generative-ai-chatbot.hf.space
+[https://padmasriai-generative-ai-chatbot.hf.space
+](https://karthikeyan05ai-generative-ai-chatbot.hf.space)
 
 ### Use Cases
 - Live demo for instructors or reviewers  
@@ -92,8 +93,8 @@ Hugging Face provides multiple ways to embed the live Gradio application.
 
 Users can open the chatbot directly in a browser:
 
-https://padmasriai-generative-ai-chatbot.hf.space
-
+[https://padmasriai-generative-ai-chatbot.hf.space
+](https://karthikeyan05ai-generative-ai-chatbot.hf.space)
 
 #### Recommended For
 - Sharing links

@@ -115,4 +115,4 @@ This method uses Gradio’s web component for seamless embedding.
   src="https://gradio.s3-us-west-2.amazonaws.com/6.2.0/gradio.js">
 </script>
 
-<gradio-app src="https://padmasriai-generative-ai-chatbot.hf.space"></gradio-app>
+<gradio-app src="https://karthikeyan05ai-generative-ai-chatbot.hf.space"></gradio-app>

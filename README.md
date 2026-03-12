@@ -40,6 +40,5 @@ The application provides interactive, context-aware conversations through a clea
 ### 1️⃣ Install dependencies
 ```bash
 pip install -r requirements.txt
-
-## 📁 Project Structure
+```
 

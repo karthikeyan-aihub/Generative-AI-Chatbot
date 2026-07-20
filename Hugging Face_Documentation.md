@@ -1,113 +1,127 @@
-# 🌍 Hugging Face Deployment Documentation  
-## Generative AI Chatbot (Gradio + LangChain + OpenAI)
+# 🌍 Hugging Face Deployment Documentation
+
+## Generative AI Chatbot (Gradio + LangChain + Groq)
 
 ---
 
-## 1. Introduction
+# 1. Introduction
 
-This document describes the **deployment, access, and embedding** of the **Generative AI Chatbot** hosted on **Hugging Face Spaces**.  
-The chatbot is built using **Gradio**, **LangChain**, and **OpenAI**, and is deployed as a publicly accessible web application.
+This document describes the **deployment, access, and embedding** of the **Generative AI Chatbot** hosted on **Hugging Face Spaces**.
 
-This documentation focuses **only on Hugging Face-related aspects**, including:
-- Deployment
-- Public access
-- Embedding methods
-- Security handling
+The chatbot is built using **Gradio**, **LangChain**, and **Groq Cloud (Llama 3.3)** and is deployed as a publicly accessible web application.
 
----
+This documentation focuses exclusively on the Hugging Face deployment, including:
 
-## 2. Hugging Face Space Overview
-
-- **Platform**: Hugging Face Spaces  
-- **SDK**: Gradio  
-- **Model Used**: OpenAI `gpt-4o-mini`  
-- **Deployment Type**: GitHub-integrated Space  
-- **Visibility**: Public  
-
-The application is automatically built and deployed from a connected GitHub repository.
+* Deployment
+* Public access
+* GitHub integration
+* Embedding methods
+* Secure API key management
 
 ---
 
-## 3. Live Application URL
+# 2. Hugging Face Space Overview
 
-The chatbot can be accessed directly using the following public URL:
+* **Platform:** Hugging Face Spaces
+* **SDK:** Gradio
+* **LLM Provider:** Groq Cloud
+* **Model:** `llama-3.3-70b-versatile`
+* **Framework:** LangChain
+* **Deployment Type:** GitHub-integrated Space
+* **Visibility:** Public
 
-[https://karthikeyan05ai-generative-ai-chatbot.hf.space
-](https://karthikeyan05ai-generative-ai-chatbot.hf.space)
+The application is automatically built and deployed whenever changes are pushed to the connected GitHub repository.
+
+---
+
+# 3. Live Application URL
+
+The chatbot can be accessed using the following public URL:
+
+**https://karthikeyan05ai-generative-ai-chatbot.hf.space**
 
 ### Use Cases
-- Live demo for instructors or reviewers  
-- Portfolio showcase  
-- Quick access without installation  
+
+* Live demonstrations
+* Academic project showcase
+* Portfolio presentation
+* Instant access without local installation
 
 ---
 
-## 4. GitHub Integration with Hugging Face
+# 4. GitHub Integration with Hugging Face
 
-The Hugging Face Space is connected to a GitHub repository.
+The Hugging Face Space is connected directly to a GitHub repository.
 
-### Deployment Flow
+### Deployment Workflow
 
-- GitHub Repository
+```
+GitHub Repository
+        │
+        ▼
+Hugging Face Spaces
+        │
+        ▼
+ Automatic Build
+        │
+        ▼
+ Gradio Application
+        │
+        ▼
+     End Users
+```
 
-- Hugging Face Spaces
+### Benefits
 
-- Gradio Application
-
-- User Browser
-
-
-### Key Benefits
-- Automatic redeployment on GitHub updates  
-- Version-controlled source code  
-- Clean separation of code and hosting  
-
----
-
-## 5. Secure API Key Management
-
-The OpenAI API key is **not stored in the source code**.
-
-### Method Used
-- Hugging Face **Secrets Manager**
-
-### Secret Name
-
-- OPENAI_API_KEY
-
-
-### Advantages
-- API key remains hidden  
-- Safe for public repositories  
-- Industry-standard security practice  
+* Automatic deployment after every GitHub push
+* Version-controlled source code
+* Simplified maintenance and updates
+* Continuous integration workflow
 
 ---
 
-## 6. Embedding the Hugging Face App
+# 5. Secure API Key Management
 
-Hugging Face provides multiple ways to embed the live Gradio application.
+The Groq API key is **never stored in the source code**.
 
----
+Instead, Hugging Face Spaces **Secrets** are used to securely provide the API key during runtime.
 
-### 6.1 Direct URL Access (Simplest Method)
 
-Users can open the chatbot directly in a browser:
+### Security Benefits
 
-[https://karthikeyan05ai-generative-ai-chatbot.hf.space
-](https://karthikeyan05ai-generative-ai-chatbot.hf.space)
-
-#### Recommended For
-- Sharing links
-- GitHub README live demo
-- Mobile and desktop users
+* API key remains hidden
+* Safe for public GitHub repositories
+* Prevents accidental credential exposure
+* Follows industry best practices
 
 ---
 
-### 6.2 Web Component Embed (Modern Websites)
+# 6. Embedding the Hugging Face Application
 
-This method uses Gradio’s web component for seamless embedding.
+Hugging Face provides multiple ways to embed the deployed Gradio application.
 
-#### Embed Code
+---
+
+## 6.1 Direct URL Access
+
+Users can access the chatbot directly through any web browser.
+
+**https://karthikeyan05ai-generative-ai-chatbot.hf.space**
+
+### Recommended For
+
+* Portfolio websites
+* GitHub README files
+* Academic demonstrations
+* Mobile and desktop access
+
+---
+
+## 6.2 Gradio Web Component Embed
+
+The chatbot can be embedded into any HTML webpage using the Gradio Web Component.
+
+### Embed Code
 
 ```html
 <script
@@ -116,3 +130,56 @@ This method uses Gradio’s web component for seamless embedding.
 </script>
 
 <gradio-app src="https://karthikeyan05ai-generative-ai-chatbot.hf.space"></gradio-app>
+```
+
+### Recommended For
+
+* Personal portfolio websites
+* College project pages
+* Technical blogs
+* Documentation websites
+
+---
+
+# 7. Deployment Architecture
+
+```
+                 User
+                  │
+                  ▼
+         Web Browser
+                  │
+                  ▼
+       Hugging Face Spaces
+                  │
+                  ▼
+        Gradio Web Interface
+                  │
+                  ▼
+      LangChain Application
+                  │
+                  ▼
+        Groq Cloud API
+                  │
+                  ▼
+ Llama 3.3 70B Versatile Model
+```
+
+---
+
+# 8. Advantages of Hugging Face Spaces
+
+* Free hosting for Gradio applications
+* Automatic deployment from GitHub
+* Easy public sharing through a unique URL
+* Secure environment variable management
+* Built-in support for machine learning applications
+* No manual server configuration required
+
+---
+
+# 9. Conclusion
+
+The Generative AI Chatbot is successfully deployed on **Hugging Face Spaces** using **Gradio**, **LangChain**, and **Groq Cloud's Llama 3.3 model**.
+
+By integrating GitHub with Hugging Face Spaces and securely managing the `GROQ_API_KEY` using Hugging Face Secrets, the application remains secure, maintainable, and easily accessible for demonstrations, academic presentations, and portfolio purposes.

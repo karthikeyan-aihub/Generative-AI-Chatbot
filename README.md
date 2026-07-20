@@ -57,27 +57,7 @@ cd Generative-AI-Chatbot
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Set the Groq API Key
-
-**Windows (PowerShell)**
-
-```powershell
-$env:GROQ_API_KEY="gsk_your_api_key"
-```
-
-**Windows (CMD)**
-
-```cmd
-set GROQ_API_KEY=gsk_your_api_key
-```
-
-**Linux / macOS**
-
-```bash
-export GROQ_API_KEY="gsk_your_api_key"
-```
-
-### 4️⃣ Run the Application
+### 3️⃣ Run the Application
 
 ```bash
 python app.py
@@ -118,24 +98,9 @@ langchain-groq>=0.2.0
 ```
 
 ---
-
-## 📸 Demo
-
-*(Add a screenshot or GIF of your chatbot here.)*
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
 ## 👨‍💻 Author
 
 **Karthikeyan S**
 
 - 🎓 B.E. Computer Science Engineering (AI & ML)
 - 🏫 Annamalai University
-- 💼 AI & Machine Learning Enthusiast
-- 🌐 GitHub: https://github.com/karthikeyan-2005

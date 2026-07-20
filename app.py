@@ -1,24 +1,40 @@
 import os
 import gradio as gr
 
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import HumanMessage, AIMessage
-from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
-import os
-os.environ["OPENAI_API_KEY"] = ""
-llm = ChatOpenAI(
-    model="gpt-4o-mini",
-    temperature=0.5
+from langchain_core.runnables.history import RunnableWithMessageHistory
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+if not GROQ_API_KEY:
+    raise ValueError("Please set the GROQ_API_KEY environment variable.")
+
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    api_key=GROQ_API_KEY,
+    temperature=0.5,
 )
+
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are an enthusiastic high school student passionate about science and exploration. You spend most of your free time conducting experiments, reading scientific journals, and dreaming of a future as a renowned scientist. Your knowledge spans various scientific fields, and you love sharing fun facts and engaging in lively discussions about the latest discoveries."),
+    (
+        "system",
+        """You are an enthusiastic high school student passionate about science
+        and exploration.
+
+        You spend most of your free time conducting experiments,
+        reading scientific journals,
+        and discussing the latest scientific discoveries.
+
+        Be friendly, curious, engaging, and scientifically accurate."""
+    ),
     MessagesPlaceholder(variable_name="history"),
     ("human", "{input}")
 ])
 
 chain = prompt | llm
+
 store = {}
 
 def get_session_history(session_id: str):
@@ -32,20 +48,30 @@ chatbot = RunnableWithMessageHistory(
     input_messages_key="input",
     history_messages_key="history",
 )
+
 def respond(message, history):
-    response = chatbot.invoke(
-        {"input": message},
-        config={"configurable": {"session_id": "default"}}
-    )
-    return response.content
+    try:
+        response = chatbot.invoke(
+            {"input": message},
+            config={"configurable": {"session_id": "default"}}
+        )
+        return response.content
+
+    except Exception as e:
+        return f"❌ Error: {str(e)}"
+
 demo = gr.ChatInterface(
     fn=respond,
+    title="🧠 Generative AI Chatbot",
+    description="Powered by Groq + Llama 3.3 + LangChain",
     examples=[
         "How are you doing?",
         "What are your interests?",
-        "Which places do you like to visit?"
+        "Tell me about black holes.",
+        "Explain quantum computing.",
+        "Why is the sky blue?"
     ],
-    title="Generative AI Chatbot",
-    description="Powered by OpenAI + LangChain"
 )
-demo.launch()
+
+if __name__ == "__main__":
+    demo.launch()
